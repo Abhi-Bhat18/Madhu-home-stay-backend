@@ -6,7 +6,7 @@ dotenv.config();
 const User = require("../models/userModel");
 
 // @desc    Register new user
-// @route   POST /api/users
+// @route   POST /api/users/register
 // @access  Public
 const registerUser = async (req, res) => {
   try {
@@ -36,8 +36,8 @@ const registerUser = async (req, res) => {
     });
 
     if (user) {
-      res.status(201).json({
-        status:'ok'
+      res.status(201).send({
+        message: "user registered",
       });
     } else {
       res.status(400);
@@ -48,7 +48,7 @@ const registerUser = async (req, res) => {
   }
 };
 
-//@route : POST /api/users
+//@route : POST /api/users/login
 //@access  Public
 const loginUser = async (req, res) => {
   try {
@@ -56,26 +56,48 @@ const loginUser = async (req, res) => {
 
     // Check for user email
     const user = await User.findOne({ email });
-    const token = generateToken(user._id);
-    user.token = token;
-    user.save();
-
+       
     if (user && (await bcrypt.compare(password, user.password))) {
+      const token = generateToken(user._id);
       res.status(201).json({
         _id: user.id,
         name: user.name,
         email: user.email,
         token,
-        status:'ok'
+        status: "ok",
       });
     } else {
       res.status(400);
       throw new Error("Invalid credentials");
     }
   } catch (error) {
-    res.status(400).json({'status':'error'});
+    res.status(400).json({ status: "error" });
   }
 };
+
+//@route: get /api/user
+const userDetails = async(req,res)=>{
+  try {
+    const userId = req.userId;
+    const user = await User.findById(userId).populate('bookingDetails','checkIn checkOut roomDetails').lean();
+    console.log(user['bookingDetails'][0]['roomDetails'])
+    // const data = {
+    //   fullName:user.fullName,
+    //   email:user.email,
+    //   contact:user.contact,
+    //   bookingDetails:[
+    //     user.bookingDetails
+    //   ]
+    // }
+    // console.log(data);
+    res.send('user details');
+
+  } catch (error) {
+    console.log(error.message);
+    res.status(400).send(error.message);
+  }
+
+}
 
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -86,4 +108,5 @@ const generateToken = (id) => {
 module.exports = {
   loginUser,
   registerUser,
+  userDetails
 };

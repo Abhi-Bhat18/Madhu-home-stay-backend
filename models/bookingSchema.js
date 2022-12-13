@@ -9,7 +9,18 @@ const bookingSchema = new mongoose.Schema({
         type:Date,
         required:true
     },
+    roomDetails:[
+        {roomType:String,
+        roomsBooked:Number,
+        amount:Number
+        }
+    ],
     paymentDetails:[{
-        type:mongoose.Schema.Types.ObjectId,ref:'payment'
-    }]
-})
+        type:mongoose.Schema.Types.ObjectId,ref:'Payment'
+    }],
+    userId:{
+        type:mongoose.Schema.Types.ObjectId,ref:'User'
+    }
+},{timestamps:true},{'collection':'booking'})
+
+module.exports = mongoose.model('Booking',bookingSchema);

@@ -23,13 +23,11 @@ const userSchema = mongoose.Schema(
         type:Boolean,
         default:false
     },
-    token:{
-        type:String
-    },
+    
     bookingDetails:[{
-      type:mongoose.Schema.Types.ObjectId
+      type:mongoose.Schema.Types.ObjectId,ref:'Booking'
     }],
-    rooms:[{type:mongoose.Schema.Types.ObjectId,ref:'room'}]
+    
   },
   {
     timestamps: true,

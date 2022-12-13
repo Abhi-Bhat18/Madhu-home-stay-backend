@@ -24,14 +24,16 @@ const razorpay = new Razorpay({
 
 //@route /payment
 const payment = async (req, res) => {
-  //Getting the token and verifying 
+
+  //Getting the token and verifying from the middleware
   const token = req.headers["x-access-token"];
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
   const user = await User.findById(decoded.id);
 
   //Setting the parameters for RazorPay
   const payment_capture = 1;
-  const amount = 400;
+  const amount = req.body.amount;
+  console.log(req.body);
   const currency = "INR";
 
   //Options for Razorpay
@@ -84,6 +86,8 @@ const paymentVerification = async (req, res) => {
       signature:razorpay_signature,
       userId:decoded.id
     })  
+
+    
     
     res.json({
       status: "ok",

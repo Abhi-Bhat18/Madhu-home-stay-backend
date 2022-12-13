@@ -9,7 +9,7 @@ const userJwtAuth = require('./middlewares/cookieJwtAuth')
 
 const userRoutes = require('./routes/userRoutes')
 const paymentRoutes = require('./routes/paymentRoutes');
-
+const dataRoutes = require('./routes/dataRoutes');
 connectDB()
 
 //Middlewares
@@ -20,26 +20,11 @@ app.use(cors({
 }))
 
 //routes
-app.use('/api/user',userRoutes);
+app.use('/api/user',userJwtAuth,userRoutes);
 app.use('',paymentRoutes);
+app.use('/api/data',dataRoutes);
 
 
-app.get('/',(req,res)=>{
-   res.send('Welcome to Madhu Home Stay')
-})
-app.get('/test',(req,res)=>{
-    
-    if(token){
-        console.log(token)
-        res.json({
-            'status':'ok',
-            token
-        })
-    }
-    else{
-        return res.location('/Login');
-    }
-})
 
 app.listen(PORT,()=>{
     console.log(`server is listening at http://127.0.0.1:${PORT}`)

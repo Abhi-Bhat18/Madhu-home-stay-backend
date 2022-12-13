@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const paymentSchem = new mongoose.Schema({
+const PaymentSchema = new mongoose.Schema({
     orderId:{
         type:String
     },
@@ -20,4 +20,5 @@ const paymentSchem = new mongoose.Schema({
     timestamps:true
 },{'collection':'payment'})
 
-module.exports = mongoose.model('Payment',paymentSchem);
+const PaymentModel = mongoose.model('Payment',PaymentSchema);
+module.exports = PaymentModel;

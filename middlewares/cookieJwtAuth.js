@@ -4,7 +4,7 @@ const userJwtAuth = (req,res,next)=>{
     const token = req.headers['x-access-token']
     try{
         const decoded = jwt.verify(token,process.env.JWT_SECRET)
-        console.log(decoded)
+
         if(decoded){
             req.userId = decoded.id
             next()
