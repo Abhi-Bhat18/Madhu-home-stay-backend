@@ -14,7 +14,7 @@ const PaymentSchema = new mongoose.Schema({
         type:Date
     },
     userId:{
-        type:mongoose.Schema.Types.ObjectId
+        type:mongoose.Schema.Types.ObjectId,ref:'User'
     }
 },{
     timestamps:true

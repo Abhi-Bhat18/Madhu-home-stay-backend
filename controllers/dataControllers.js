@@ -1,9 +1,8 @@
 // const mongoose = require("mongoose");
 const { model } = require("mongoose");
 const Booking = require("../models/bookingSchema");
-
+const Room = require('../models/roomModel');
 // const paymet = require('../models/paymentModel')
-
 
 // {
 //     "checkIn":"2022-09-21T13:28:06.419Z",
@@ -49,6 +48,27 @@ const getBooking = async (req,res)=>{
         res.send(error.messsage);
     }
 }
+
+
+
+// @desc create room details
+// @route POST /api/admin/rooms
+// @access admin
+const createRoom = async (req, res) => {  
+  try {
+    const roomData = req.body;
+    const room = await Room.create(roomData);
+    if (room) {
+      res.status(200).json(room);
+    } else {
+      res.status(404);
+      throw new Error("Room not found");
+    }
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
 
 module.exports = {
     createBooking,

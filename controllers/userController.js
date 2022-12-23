@@ -4,9 +4,9 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 const User = require("../models/userModel");
-
+const Booking = require("../models/bookingSchema");
 // @desc    Register new user
-// @route   POST /api/users/register
+// @route   POST /api/user/register
 // @access  Public
 const registerUser = async (req, res) => {
   try {
@@ -38,6 +38,7 @@ const registerUser = async (req, res) => {
     if (user) {
       res.status(201).send({
         message: "user registered",
+        status: "ok",
       });
     } else {
       res.status(400);
@@ -48,7 +49,7 @@ const registerUser = async (req, res) => {
   }
 };
 
-//@route : POST /api/users/login
+//@route : POST /api/user/login
 //@access  Public
 const loginUser = async (req, res) => {
   try {
@@ -56,9 +57,9 @@ const loginUser = async (req, res) => {
 
     // Check for user email
     const user = await User.findOne({ email });
-       
+
     if (user && (await bcrypt.compare(password, user.password))) {
-      const token = generateToken(user._id);
+      const token = generateToken(user._id,user.isAdmin);
       res.status(201).json({
         _id: user.id,
         name: user.name,
@@ -75,38 +76,36 @@ const loginUser = async (req, res) => {
   }
 };
 
-//@route: get /api/user
-const userDetails = async(req,res)=>{
+//@route: get /api/user/:id
+const userDetails = async (req, res) => {
   try {
-    const userId = req.userId;
-    const user = await User.findById(userId).populate('bookingDetails','checkIn checkOut roomDetails').lean();
-    console.log(user['bookingDetails'][0]['roomDetails'])
-    // const data = {
-    //   fullName:user.fullName,
-    //   email:user.email,
-    //   contact:user.contact,
-    //   bookingDetails:[
-    //     user.bookingDetails
-    //   ]
-    // }
-    // console.log(data);
-    res.send('user details');
 
+    const userId = req.params.id;
+
+    const user = await User.findById(userId).select("fullName email contact") 
+    console.log(user)
+    const booking = await Booking.find({userId:userId}).populate('roomDetails','roomType roomsBooked')
+
+    if (user) {
+      res.status(200).json({user,booking}); //send the user details to the client side
+    } else {
+      throw new Error("User not found");
+    }
   } catch (error) {
-    console.log(error.message);
     res.status(400).send(error.message);
   }
+};
 
-}
 
-const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: "30d",
+//Token generation
+const generateToken = (id,isAdmin) => {
+  return jwt.sign({ userId:id,'isAdmin':isAdmin }, process.env.JWT_SECRET, {
+    expiresIn: "7d",
   });
 };
 
 module.exports = {
   loginUser,
   registerUser,
-  userDetails
+  userDetails,
 };

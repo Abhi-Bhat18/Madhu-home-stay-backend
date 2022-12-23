@@ -4,5 +4,5 @@ const {registerUser , loginUser,userDetails}= require('../controllers/userContro
 
 router.post('/register',registerUser)
 router.post('/login',loginUser)
-router.get('/details',userDetails);
+router.get('/:id',userDetails);
 module.exports = router

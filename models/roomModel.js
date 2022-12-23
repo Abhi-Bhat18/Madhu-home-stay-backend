@@ -14,13 +14,18 @@ const roomSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    bookedRooms: [
+    roomDescription: {
+      type: String,
+    },
+    roomImage: {
+      type: String,
+    },
+    roomBookings: [
       {
         bookedDates: {
-          type: Date,
-        },
-        availableRooms: {
-          type: Number,
+          checkIn: { type: Date },
+          checkOut: { type: Date },
+          bookedRooms: {  type: Number}
         },
       },
     ],
@@ -32,3 +37,5 @@ const roomSchema = new mongoose.Schema(
 );
 
 module.exports = mongoose.model("Room", roomSchema);
+
+
