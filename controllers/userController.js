@@ -36,7 +36,7 @@ const registerUser = async (req, res) => {
     });
 
     if (user) {
-      res.status(201).send({
+      res.status(201).json({
         message: "user registered",
         status: "ok",
       });
@@ -59,7 +59,7 @@ const loginUser = async (req, res) => {
     const user = await User.findOne({ email });
 
     if (user && (await bcrypt.compare(password, user.password))) {
-      const token = generateToken(user._id,user.isAdmin);
+      const token = generateToken(user._id, user.isAdmin);
       res.status(201).json({
         _id: user.id,
         name: user.name,
@@ -79,15 +79,16 @@ const loginUser = async (req, res) => {
 //@route: get /api/user/:id
 const userDetails = async (req, res) => {
   try {
-
     const userId = req.params.id;
 
-    const user = await User.findById(userId).select("fullName email contact") 
-    console.log(user)
-    const booking = await Booking.find({userId:userId}).select('checkIn checkOut roomDetails').populate('roomDetails','roomType roomsBooked')
+    const user = await User.findById(userId).select("fullName email contact");
+    console.log(user);
+    const booking = await Booking.find({ userId: userId })
+      .select("checkIn checkOut roomDetails")
+      .populate("roomDetails", "roomType roomsBooked");
 
     if (user) {
-      res.status(200).json({user,booking}); //send the user details to the client side
+      res.status(200).json({ user, booking }); //send the user details to the client side
     } else {
       throw new Error("User not found");
     }
@@ -96,10 +97,9 @@ const userDetails = async (req, res) => {
   }
 };
 
-
 //Token generation
-const generateToken = (id,isAdmin) => {
-  return jwt.sign({ userId:id,'isAdmin':isAdmin }, process.env.JWT_SECRET, {
+const generateToken = (id, isAdmin) => {
+  return jwt.sign({ userId: id, isAdmin: isAdmin }, process.env.JWT_SECRET, {
     expiresIn: "7d",
   });
 };

@@ -18,7 +18,7 @@ connectDB()
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
 app.use(cors({ 
-    origin:"http://localhost:3000", 
+    origin:"https://darling-parfait-b389ea.netlify.app/", 
     credentials:true 
 }))
 
