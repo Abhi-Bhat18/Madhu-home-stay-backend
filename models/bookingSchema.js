@@ -10,7 +10,7 @@ const bookingSchema = new mongoose.Schema(
       type: Date,
       required: true,
     },
-    roomDetails: [{ roomType: String, roomsBooked: Number, roomCost:Number }],
+    roomDetails: [{ roomType: String, roomsBooked: Number, roomCost:Number , adults:Number , children:Number }],
     paymentDetails: [
       {
         type: mongoose.Schema.Types.ObjectId,

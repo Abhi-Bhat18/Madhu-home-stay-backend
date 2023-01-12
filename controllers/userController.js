@@ -84,7 +84,7 @@ const userDetails = async (req, res) => {
 
     const user = await User.findById(userId).select("fullName email contact") 
     console.log(user)
-    const booking = await Booking.find({userId:userId}).populate('roomDetails','roomType roomsBooked')
+    const booking = await Booking.find({userId:userId}).select('checkIn checkOut roomDetails').populate('roomDetails','roomType roomsBooked')
 
     if (user) {
       res.status(200).json({user,booking}); //send the user details to the client side

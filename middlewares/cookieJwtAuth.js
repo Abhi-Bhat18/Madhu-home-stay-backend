@@ -5,10 +5,10 @@ const userJwtAuth = (req,res,next)=>{
     try{
         const decoded = jwt.verify(token,process.env.JWT_SECRET)
         if(decoded){
-            req.userId = decoded.id
+            
+            req.userId = decoded.userId
             req.isAdminn = decoded.isAdmin
             next()
-            
         }else{
             throw new Error('Token Expired');
         }

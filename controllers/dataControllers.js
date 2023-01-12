@@ -50,7 +50,6 @@ const getBooking = async (req,res)=>{
 }
 
 
-
 // @desc create room details
 // @route POST /api/admin/rooms
 // @access admin

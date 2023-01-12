@@ -20,6 +20,8 @@ const keySecret = process.env.RAZOR_PAY_SECRET;
 const razorpay = new Razorpay({
   key_id: keyId,
   key_secret: keySecret,
+
+  
 });
 
 //@route /payment
@@ -57,11 +59,7 @@ const payment = async (req, res) => {
 //@route /verification
 const paymentVerification = async (req, res) => {
   try {
-    const decoded = jwt.verify(
-      req.headers["x-access-token"],
-      process.env.JWT_SECRET
-    );
-
+    console.log(req.userId)
     const razorpay_order_id = req.body.razropayOrderId;
     const razorpay_payment_id = req.body.razorpayPaymentId;
     const razorpay_signature = req.body.razorpaySignature;
@@ -79,7 +77,7 @@ const paymentVerification = async (req, res) => {
         orderId: razorpay_order_id,
         paymentId: razorpay_payment_id,
         signature: razorpay_signature,
-        userId: decoded.id,
+        userId: req.userId,
       });
 
       if (payment) {
@@ -87,12 +85,12 @@ const paymentVerification = async (req, res) => {
           checkIn: req.body.checkIn,
           checkOut: req.body.checkOut,
           roomDetails: req.body.roomDetails,
-          userId: decoded.id,
+          userId: req.userId,
           paymentDetails: payment._id,
         });
         if (booking) {
           await User.findByIdAndUpdate(
-            { _id: decoded.id },
+            { _id: req.userId },
             { $addToSet: { bookingDetails: booking._id } }
           );
           roomDetails.map(async (ele) => {
