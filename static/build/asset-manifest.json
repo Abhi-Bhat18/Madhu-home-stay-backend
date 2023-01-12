@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/static/css/main.613cae3b.css",
+    "main.js": "/static/js/main.388439eb.js",
+    "static/media/Entry.jpg": "/static/media/Entry.2bd8c9894d5550725c50.jpg",
+    "static/media/IMG20221225162315.jpg": "/static/media/IMG20221225162315.6e24895cdb09f8aa06ab.jpg",
+    "static/media/IMG20230101172612.jpg": "/static/media/IMG20230101172612.2a72152a9b33fa594ab9.jpg",
+    "static/media/board.jpg": "/static/media/board.df98b50cd4c3cc7ab4c3.jpg",
+    "static/media/Dining area.jpg": "/static/media/Dining area.ea9d0013ff23f90419d8.jpg",
+    "static/media/homestay-night-2.jpg": "/static/media/homestay-night-2.48cb4a209a55c58a3166.jpg",
+    "static/media/Dormitory.jpg": "/static/media/Dormitory.e190d2bc33b23e53539c.jpg",
+    "static/media/IMG20221230194612.jpg": "/static/media/IMG20221230194612.80165e6ea159912c0fc9.jpg",
+    "static/media/User.jpg": "/static/media/User.2688819aafdd38fd9491.jpg",
+    "static/media/IMG20221230194707.jpg": "/static/media/IMG20221230194707.c7c9c6ff359cf7bded34.jpg",
+    "static/media/IMG20221230193249 (1).jpg": "/static/media/IMG20221230193249 (1).0fccee900cfeb28c4c2d.jpg",
+    "static/media/IMG20221230193249.jpg": "/static/media/IMG20221230193249.0fccee900cfeb28c4c2d.jpg",
+    "static/media/cottages.jpg": "/static/media/cottages.0fccee900cfeb28c4c2d.jpg",
+    "static/media/IMG20221230193557.jpg": "/static/media/IMG20221230193557.8d2545b22eccb764285d.jpg",
+    "static/media/Ac room.jpg": "/static/media/Ac room.9083787a0ac2e954db67.jpg",
+    "static/media/room1.jpg": "/static/media/room1.4e52e1414209ccf8c001.jpg",
+    "static/media/hanging bridge.png": "/static/media/hanging bridge.ce3913d2928af3a972f0.png",
+    "static/media/viewpoint.jpg": "/static/media/viewpoint.a30c0b3e9fca9cc0d7b0.jpg",
+    "static/media/yana.jpg": "/static/media/yana.314e659d765d49c35ba7.jpg",
+    "static/media/logonav.png": "/static/media/logonav.013bace620315a35a3fd.png",
+    "static/media/logo_homestay.png": "/static/media/logo_homestay.1af7e38f31613afd04b1.png",
+    "index.html": "/index.html",
+    "main.613cae3b.css.map": "/static/css/main.613cae3b.css.map",
+    "main.388439eb.js.map": "/static/js/main.388439eb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.613cae3b.css",
+    "static/js/main.388439eb.js"
+  ]
+}
