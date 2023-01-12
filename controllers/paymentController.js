@@ -13,8 +13,8 @@ const Room = require("../models/roomModel");
 dotenv.config(); //Configuring the env
 
 //Importing the Razorpay key and secret
-const keyId = process.env.RAZOR_PAY_ID;
-const keySecret = process.env.RAZOR_PAY_SECRET;
+const keyId ="rzp_test_awwz7uQCXxYih" ;
+const keySecret ="OO5WA5Hf49oRYzxqrcv1q9Ki";
 
 //Creatinag a razorpay instance
 const razorpay = new Razorpay({

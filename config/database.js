@@ -5,7 +5,7 @@ dotenv.config()
 mongoose.set("strictQuery", false);
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGO_URI)
+    const conn = await mongoose.connect("mongodb+srv://abhishek1234:root@cluster0.7hooq3f.mongodb.net/Madhu_home_stay?retryWrites=true&w=majority")
     console.log(`MongoDB Connected: ${conn.connection.host}`)
   } catch (error) {
     console.log(error)
