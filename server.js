@@ -22,6 +22,8 @@ app.use(cors({
     credentials:true 
 }))
 
+console.log('mongo ',process.env.MONGO_URI)
+
 //routes
 app.use('/api/user',userRoutes);
 app.use('/api/payment',cookieJwtAuth,paymentRoutes);
