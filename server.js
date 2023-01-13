@@ -1,6 +1,6 @@
 const express = require('express');
-const cors = require('cors')
-
+const cors = require('cors');
+const path = require('path');		
 const connectDB = require('./config/database')
 const cookieJwtAuth = require('./middlewares/cookieJwtAuth') //auth middleware
 
@@ -30,6 +30,7 @@ app.use('/api/payment',cookieJwtAuth,paymentRoutes);
 app.use('/api/data',dataRoutes);
 app.use('/api/admin',adminRoutes);
 
-app.listen(PORT,()=>{
+app.listen(1337,()=>{
     console.log(`server is listening at http://127.0.0.1:${PORT}`)
 })
+		

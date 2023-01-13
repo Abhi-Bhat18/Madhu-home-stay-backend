@@ -99,7 +99,7 @@ const userDetails = async (req, res) => {
 
 //Token generation
 const generateToken = (id, isAdmin) => {
-  return jwt.sign({ userId: id, isAdmin: isAdmin }, process.env.JWT_SECRET, {
+  return jwt.sign({ userId: id, isAdmin: isAdmin },"abhi1234", {
     expiresIn: "7d",
   });
 };
