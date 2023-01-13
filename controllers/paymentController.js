@@ -19,9 +19,7 @@ const keySecret ="OO5WA5Hf49oRYzxqrcv1q9Ki";
 //Creatinag a razorpay instance
 const razorpay = new Razorpay({
   key_id: keyId,
-  key_secret: keySecret,
-
-  
+  key_secret: keySecret,  
 });
 
 //@route /payment
@@ -68,7 +66,8 @@ const paymentVerification = async (req, res) => {
     //Razorpay verification process
     const body = razorpay_order_id + "|" + razorpay_payment_id;
     const expectedSignature = crypto
-      .createHmac("sha256", process.key_secret)
+
+      .createHmac("sha256", keySecret)
       .update(body.toString())
       .digest("hex");
 
