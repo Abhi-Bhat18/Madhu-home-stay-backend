@@ -66,7 +66,7 @@ const paymentVerification = async (req, res) => {
     //Razorpay verification process
     const body = razorpay_order_id + "|" + razorpay_payment_id;
     const expectedSignature = crypto
-      .createHmac("sha256", keySecret)
+      .createHmac("sha256", "OO5WA5Hf49oRYzxqrcv1q9Ki")
       .update(body.toString())
       .digest("hex");
 
