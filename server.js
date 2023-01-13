@@ -15,6 +15,7 @@ const PORT = process.env.PORT
 connectDB()
 
 //Middlewares
+app.use(express.static('static/build'))
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
 app.use(cors({ 
@@ -22,7 +23,6 @@ app.use(cors({
     credentials:true 
 }))
 
-console.log('mongo ',process.env.MONGO_URI)
 
 //routes
 app.use('/api/user',userRoutes);
@@ -30,7 +30,11 @@ app.use('/api/payment',cookieJwtAuth,paymentRoutes);
 app.use('/api/data',dataRoutes);
 app.use('/api/admin',adminRoutes);
 
+app.get('*',(req,res)=>{
+	res.sendFile(path.join(__dirname,'static/build/index.html'));
+})
+
 app.listen(1337,()=>{
-    console.log(`server is listening at http://127.0.0.1:${PORT}`)
+    console.log(`server is listening at http://164.92.98.182:1337}`)
 })
 		

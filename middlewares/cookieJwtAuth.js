@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 const userJwtAuth = (req,res,next)=>{
     const token = req.headers['x-access-token']
     try{
-        const decoded = jwt.verify(token,process.env.JWT_SECRET)
+        const decoded = jwt.verify(token,'abhi1234');
         if(decoded){
             
             req.userId = decoded.userId
