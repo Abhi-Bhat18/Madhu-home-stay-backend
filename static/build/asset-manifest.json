@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.613cae3b.css",
-    "main.js": "/static/js/main.388439eb.js",
+    "main.css": "/static/css/main.b0804532.css",
+    "main.js": "/static/js/main.256dafa3.js",
     "static/media/Entry.jpg": "/static/media/Entry.2bd8c9894d5550725c50.jpg",
     "static/media/IMG20221225162315.jpg": "/static/media/IMG20221225162315.6e24895cdb09f8aa06ab.jpg",
     "static/media/IMG20230101172612.jpg": "/static/media/IMG20230101172612.2a72152a9b33fa594ab9.jpg",
@@ -10,6 +10,7 @@
     "static/media/homestay-night-2.jpg": "/static/media/homestay-night-2.48cb4a209a55c58a3166.jpg",
     "static/media/Dormitory.jpg": "/static/media/Dormitory.e190d2bc33b23e53539c.jpg",
     "static/media/IMG20221230194612.jpg": "/static/media/IMG20221230194612.80165e6ea159912c0fc9.jpg",
+    "static/media/non Ac.jpg": "/static/media/non Ac.c9d3898e386c076c5c0c.jpg",
     "static/media/User.jpg": "/static/media/User.2688819aafdd38fd9491.jpg",
     "static/media/IMG20221230194707.jpg": "/static/media/IMG20221230194707.c7c9c6ff359cf7bded34.jpg",
     "static/media/IMG20221230193249 (1).jpg": "/static/media/IMG20221230193249 (1).0fccee900cfeb28c4c2d.jpg",
@@ -24,11 +25,11 @@
     "static/media/logonav.png": "/static/media/logonav.013bace620315a35a3fd.png",
     "static/media/logo_homestay.png": "/static/media/logo_homestay.1af7e38f31613afd04b1.png",
     "index.html": "/index.html",
-    "main.613cae3b.css.map": "/static/css/main.613cae3b.css.map",
-    "main.388439eb.js.map": "/static/js/main.388439eb.js.map"
+    "main.b0804532.css.map": "/static/css/main.b0804532.css.map",
+    "main.256dafa3.js.map": "/static/js/main.256dafa3.js.map"
   },
   "entrypoints": [
-    "static/css/main.613cae3b.css",
-    "static/js/main.388439eb.js"
+    "static/css/main.b0804532.css",
+    "static/js/main.256dafa3.js"
   ]
 }
