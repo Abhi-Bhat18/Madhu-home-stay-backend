@@ -13,7 +13,7 @@ const Room = require("../models/roomModel");
 dotenv.config(); //Configuring the env
 
 //Importing the Razorpay key and secret
-const keyId ="rzp_test_awwz7uQCXxYih" ;
+const keyId ="rzp_test_awwzQ7uQCXxYih" ;
 const keySecret ="OO5WA5Hf49oRYzxqrcv1q9Ki";
 
 //Creatinag a razorpay instance
@@ -66,7 +66,7 @@ const paymentVerification = async (req, res) => {
     //Razorpay verification process
     const body = razorpay_order_id + "|" + razorpay_payment_id;
     const expectedSignature = crypto
-      .createHmac("sha256", process.env.RAZOR_PAY_SECRET)
+      .createHmac("sha256", keySecret)
       .update(body.toString())
       .digest("hex");
 
