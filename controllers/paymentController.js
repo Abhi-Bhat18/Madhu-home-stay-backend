@@ -62,7 +62,7 @@ const paymentVerification = async (req, res) => {
     const razorpay_payment_id = req.body.razorpayPaymentId;
     const razorpay_signature = req.body.razorpaySignature;
     const roomDetails = req.body.roomDetails;
-
+    const keySecret ="OO5WA5Hf49oRYzxqrcv1q9Ki";
     //Razorpay verification process
     const body = razorpay_order_id + "|" + razorpay_payment_id;
     const expectedSignature = crypto
