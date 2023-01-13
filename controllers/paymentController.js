@@ -19,9 +19,7 @@ const keySecret = process.env.RAZOR_PAY_SECRET;
 //Creatinag a razorpay instance
 const razorpay = new Razorpay({
   key_id: keyId,
-  key_secret: keySecret,
-
-  
+  key_secret: keySecret,  
 });
 
 //@route /payment
