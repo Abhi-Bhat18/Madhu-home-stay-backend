@@ -35,6 +35,6 @@ app.get('*',(req,res)=>{
 })
 
 app.listen(1337,()=>{
-    console.log(`server is listening at http://164.92.98.182:1337}`)
+    console.log(`server is listening at http://164.92.98.182:1337`)
 })
 		
