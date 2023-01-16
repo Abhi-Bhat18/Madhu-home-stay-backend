@@ -15,6 +15,7 @@ const PORT = process.env.PORT;
 connectDB();
 
 //Middlewares
+app.use(express.static('static/build'))
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(
@@ -23,7 +24,6 @@ app.use(
   })
 );
 
-console.log("mongo ", process.env.MONGO_URI);
 
 //routes
 app.use("/api/user", userRoutes);
@@ -31,6 +31,10 @@ app.use("/api/payment", cookieJwtAuth, paymentRoutes);
 app.use("/api/data", dataRoutes);
 app.use("/api/admin", adminRoutes);
 
-app.listen(1337, () => {
-  console.log(`server is listening at http://127.0.0.1:${PORT}`);
-});
+app.get('*',(req,res)=>{
+	res.sendFile(path.join(__dirname,'static/build/index.html'));
+})
+
+app.listen(1337,()=>{
+    console.log(`server is listening at http://164.92.98.182:1337`)
+})
