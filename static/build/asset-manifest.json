@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.b0804532.css",
-    "main.js": "/static/js/main.febd86d3.js",
+    "main.js": "/static/js/main.14977e3d.js",
     "static/media/Entry.jpg": "/static/media/Entry.2bd8c9894d5550725c50.jpg",
     "static/media/IMG20221225162315.jpg": "/static/media/IMG20221225162315.6e24895cdb09f8aa06ab.jpg",
     "static/media/tunga_bhadra.jpg": "/static/media/tunga_bhadra.2a72152a9b33fa594ab9.jpg",
@@ -25,10 +25,10 @@
     "static/media/logo_homestay.png": "/static/media/logo_homestay.1af7e38f31613afd04b1.png",
     "index.html": "/index.html",
     "main.b0804532.css.map": "/static/css/main.b0804532.css.map",
-    "main.febd86d3.js.map": "/static/js/main.febd86d3.js.map"
+    "main.14977e3d.js.map": "/static/js/main.14977e3d.js.map"
   },
   "entrypoints": [
     "static/css/main.b0804532.css",
-    "static/js/main.febd86d3.js"
+    "static/js/main.14977e3d.js"
   ]
 }
