@@ -13,13 +13,13 @@ const Room = require("../models/roomModel");
 dotenv.config(); //Configuring the env
 
 //Importing the Razorpay key and secret
-const keyId ="rzp_test_awwzQ7uQCXxYih" ;
-const keySecret ="OO5WA5Hf49oRYzxqrcv1q9Ki";
+const keyId = "rzp_test_awwzQ7uQCXxYih";
+const keySecret = "OO5WA5Hf49oRYzxqrcv1q9Ki";
 
 //Creatinag a razorpay instance
 const razorpay = new Razorpay({
   key_id: keyId,
-  key_secret: keySecret,  
+  key_secret: keySecret,
 });
 
 //@route /payment
@@ -57,12 +57,11 @@ const payment = async (req, res) => {
 //@route /verification
 const paymentVerification = async (req, res) => {
   try {
-    console.log(req.userId)
     const razorpay_order_id = req.body.razropayOrderId;
     const razorpay_payment_id = req.body.razorpayPaymentId;
     const razorpay_signature = req.body.razorpaySignature;
     const roomDetails = req.body.roomDetails;
-    const keySecret ="OO5WA5Hf49oRYzxqrcv1q9Ki";
+  
     //Razorpay verification process
     const body = razorpay_order_id + "|" + razorpay_payment_id;
     const expectedSignature = crypto
@@ -120,7 +119,6 @@ const paymentVerification = async (req, res) => {
                 { roomType: ele["roomType"] },
                 { $push: { roomBookings: roomBookings } }
               ));
-            
           });
 
           res.status(200).json({
