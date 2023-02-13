@@ -10,7 +10,7 @@ const dataRoutes = require("./routes/dataRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 1337;
 
 connectDB();
 
@@ -39,5 +39,5 @@ app.get('*',(req,res)=>{
 })
 
 app.listen(1337,()=>{
-    console.log(`server is listening at http://164.92.98.182:1337`)
+    console.log(`server is listening at http://127.0.0.1:1337`)
 })
