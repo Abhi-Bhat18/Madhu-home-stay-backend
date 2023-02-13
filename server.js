@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 1337;
 connectDB();
 
 //Middlewares
-app.use(express.static('static/build'))
+app.use(express.static('static/dist'))
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
