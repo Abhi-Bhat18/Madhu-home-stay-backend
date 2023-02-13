@@ -10,7 +10,7 @@ const dataRoutes = require("./routes/dataRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 1337;
 
 connectDB();
 
@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use(function(req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Origin', 'https://madhuhomestaysirsi.com');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -39,5 +39,5 @@ app.get('*',(req,res)=>{
 })
 
 app.listen(1337,()=>{
-    console.log(`server is listening at http://164.92.98.182:1337`)
+    console.log(`server is listening at http://127.0.0.1:1337`)
 })
