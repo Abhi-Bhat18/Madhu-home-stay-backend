@@ -35,7 +35,7 @@ app.use("/api/data", dataRoutes);
 app.use("/api/admin", adminRoutes);
 
 app.get('*',(req,res)=>{
-	res.sendFile(path.join(__dirname,'static/build/index.html'));
+	res.sendFile(path.join(__dirname,'static/dist/index.html'));
 })
 
 app.listen(1337,()=>{
