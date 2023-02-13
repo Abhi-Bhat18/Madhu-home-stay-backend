@@ -15,22 +15,21 @@ const PORT = process.env.PORT || 1337;
 connectDB();
 
 //Middlewares
+app.use(cors({
+  origin:["http://localhost:5173","https://madhuhomestaysirsi.com"],
+  credentials:true,
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With", "Accept", "Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", "Access-Control-Allow-Origin", "Access-Control-Allow-Credentials", "Access-Control-Allow-Methods", "Access-Control-Allow-Headers", "X-Access-Token"]
+}));
+
 app.use(express.static('static/dist'))
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(cors());
 
-app.use(function(req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', 'https://madhuhomestaysirsi.com');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  next();
-});
 
 //routes
 app.use("/api/user", userRoutes);
-app.use("/api/payment", cookieJwtAuth, paymentRoutes);
+app.use("/api/payment",cookieJwtAuth, paymentRoutes);
 app.use("/api/data", dataRoutes);
 app.use("/api/admin", adminRoutes);
 

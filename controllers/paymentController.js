@@ -24,6 +24,7 @@ const razorpay = new Razorpay({
 
 //@route /payment
 const payment = async (req, res) => {
+  console.log("hitting payment controller")
   const user = await User.findById(req.userId).lean();
 
   //Setting the parameters for RazorPay

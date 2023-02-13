@@ -4,8 +4,7 @@ const userJwtAuth = (req,res,next)=>{
     const token = req.headers['x-access-token']
     try{
         const decoded = jwt.verify(token,'abhi1234');
-        if(decoded){
-            
+        if(decoded){      
             req.userId = decoded.userId
             req.isAdminn = decoded.isAdmin
             next()
